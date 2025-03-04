@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices",
+    "config:recommended",
     ":label(dependencies)",
     ":timezone(Europe/Berlin)",
     "schedule:earlyMondays",
@@ -9,45 +9,9 @@
     "customManagers:dockerfileVersions",
     ":separateMultipleMajorReleases"
   ],
-  "enabledManagers": [
-    "custom.regex",
-    "docker-compose",
-    "dockerfile",
-    "npm",
-    "pip_requirements"
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": ["passbolt/passbolt"],
-      "changelogUrl": "https://github.com/passbolt/passbolt_api"
-    },
-    {
-      "matchPackageNames": ["/renovate/"],
-      "extends": ["schedule:monthly"],
-      "rebaseWhen": "never"
-    },
-    {
-      "matchDatasources": ["endoflife-date"],
-      "matchPackageNames": ["python"],
-      "extractVersion": "^(?<version>\\d+\\.\\d+).+$"
-    },
-    {
-      "matchManagers": ["npm"],
-      "dependencyDashboardApproval": true
-    },
-    {
-      "matchPackageNames": "alpine_edge/opentofu",
-      "prBodyDefinitions": {
-        "Package": "[{{{depName}}}](https://github.com/opentofu/opentofu)"
-      },
-      "prBodyNotes": ":information_source: [OpenTofu Changelog](https://github.com/opentofu/opentofu/blob/main/CHANGELOG.md)",
-      "changelogUrl": "https://github.com/opentofu/opentofu"
-    },
-    {
-      "matchPackageNames": ["timberio/vector"],
-      "changelogUrl": "https://github.com/vectordotdev/vector"
-    }
-  ],
+
+  "enabledManagers": ["dockerfile"],
+
   "customManagers": [
     {
       "customType": "regex",
