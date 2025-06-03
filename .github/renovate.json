@@ -25,7 +25,7 @@
     "splunk-operator": {
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/redhat-openshift-ecosystem/certified-operators/contents/operators/splunk-operator",
       "transformTemplates": [
-        "{\"releases\":  name.{ \"version\": $, \"sourceUrl\":\"https://github.com/splunk/splunk-operator\", \"changelogUrl\":$join([\"https://github.com/splunk/splunk-operator/\",$]) },\"homepage\": \"https://splunk.com/\"}"
+        "{\"releases\":  name.{ \"version\": $, \"sourceUrl\" : \"https://github.com/splunk/splunk-operator\", \"changelogUrl\" : $join([\"https://github.com/splunk/splunk-operator/\",$]) }, \"homepage\" : \"https://splunk.com/\", \"sourceUrl\":\"https://github.com/splunk/splunk-operator\", \"changelogUrl\" : \"https://github.com/splunk/splunk-operator\" }"
       ]
     }
   }
