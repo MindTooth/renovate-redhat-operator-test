@@ -7,16 +7,26 @@
     ":disableRateLimiting"
   ],
 
-  "enabledManagers": ["dockerfile"],
+  "enabledManagers": ["custom.regex", "dockerfile"],
 
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^Dockerfile$"],
+      "fileMatch": ["^README\\.md"],
+      "datasourceTemplate": "custom.splunk-operator",
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_version\\s*=\\s*\"(?<currentValue>.*)\""
+        "<!-- renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?[^\\S]+-->\\s+[A-Za-z0-9_]+?_VERSION=(?<currentValue>.+?)\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{/if}}"
     }
-  ]
+  ],
+
+  "customDatasources": {
+    "splunk-operator": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/redhat-openshift-ecosystem/certified-operators/contents/operators/splunk-operator",
+      "transformTemplates": [
+        "{\"releases\":  name.{ \"version\": $, \"sourceUrl\":\"https://github.com/splunk/splunk-operator\", \"changelogUrl\":$join([\"https://github.com/splunk/splunk-operator/\",$]) },\"homepage\": \"https://splunk.com/\"}"
+      ]
+    }
+  }
 }
