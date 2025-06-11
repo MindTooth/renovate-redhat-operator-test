@@ -14,8 +14,7 @@
     {
       "matchDepNames": ["/gitops/"],
       "sourceUrl": "https://github.com/redhat-developer/gitops-operator",
-      "changelogUrl": "https://github.com/redhat-developer/gitops-operator",
-      "commitMessageAction": "satan"
+      "changelogUrl": "https://github.com/redhat-developer/gitops-operator"
     }
   ],
 
