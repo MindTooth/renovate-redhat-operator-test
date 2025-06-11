@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   "extends": [
     "config:recommended",
     ":timezone(Europe/Berlin)",
@@ -11,8 +12,9 @@
 
   "packageRules": [
     {
-      "matchPackageNames": ["/gitops-operator/"],
-      "sourceUrl": "https://github.com/redhat-developer/gitops-operator"
+      "matchPackageNames": ["/gitops/"],
+      "sourceUrl": "https://github.com/redhat-developer/gitops-operator",
+      "changelogUrl": "https://github.com/redhat-developer/gitops-operator"
     }
   ],
 
