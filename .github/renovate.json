@@ -9,6 +9,13 @@
 
   "enabledManagers": ["custom.regex", "dockerfile"],
 
+  "packageRules": [
+    {
+      "matchPackageNames": ["/gitops-operator/"],
+      "sourceUrl": "https://github.com/redhat-developer/gitops-operator"
+    }
+  ],
+
   "customManagers": [
     {
       "customType": "regex",
