@@ -21,6 +21,15 @@
   "customManagers": [
     {
       "customType": "regex",
+      "managerFilePatterns": ["/openshift-release\\.env$/"],
+      "matchStrings": [
+        "# renovate: datasource=custom\\.openshift-releases depName=(?<depName>[^\\s]+)\\s+OPENSHIFT_VERSION=(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "datasourceTemplate": "custom.openshift-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
       "managerFilePatterns": ["README.md"],
       "datasourceTemplate": "custom.splunk-operator",
       "matchStrings": [
@@ -31,6 +40,10 @@
   ],
 
   "customDatasources": {
+    "openshift-releases": {
+      "defaultRegistryUrlTemplate": "http://localhost:8080/v1/openshift-releases/{{packageName}}/updates?currentVersion={{currentValue}}&arch=multi",
+      "format": "json"
+    },
     "splunk-operator": {
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/redhat-openshift-ecosystem/certified-operators/contents/operators/splunk-operator",
       "transformTemplates": [
